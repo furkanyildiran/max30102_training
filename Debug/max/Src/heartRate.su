@@ -1,0 +1,4 @@
+../max/Src/heartRate.c:25:9:checkForBeat	24	static
+../max/Src/heartRate.c:83:9:averageDCEstimator	16	static
+../max/Src/heartRate.c:90:9:lowPassFIRFilter	24	static
+../max/Src/heartRate.c:108:9:mul16	16	static

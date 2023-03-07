@@ -1,4 +1,5 @@
-Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
+max/Src/spo2_algorithm.o: ../max/Src/spo2_algorithm.c \
+ C:/Users/MONSTER/Desktop/max30102_training/max/Inc/spo2_algorithm.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h \
  ../Core/Inc/stm32wbxx_hal_conf.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_dma.h \
@@ -32,11 +33,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_rcc_ex.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_crs.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h \
- C:/Users/MONSTER/Desktop/max30102_training/max/Inc/max30102.h \
- C:/Users/MONSTER/Desktop/max30102_training/max/Inc/heartRate.h \
- C:/Users/MONSTER/Desktop/max30102_training/max/Inc/spo2_algorithm.h
-../Core/Inc/main.h:
+ ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h
+C:/Users/MONSTER/Desktop/max30102_training/max/Inc/spo2_algorithm.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h:
 ../Core/Inc/stm32wbxx_hal_conf.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_dma.h:
@@ -71,6 +69,3 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_rcc_ex.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_crs.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h:
-C:/Users/MONSTER/Desktop/max30102_training/max/Inc/max30102.h:
-C:/Users/MONSTER/Desktop/max30102_training/max/Inc/heartRate.h:
-C:/Users/MONSTER/Desktop/max30102_training/max/Inc/spo2_algorithm.h:
