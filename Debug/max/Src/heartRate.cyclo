@@ -1,0 +1,4 @@
+heartRate.c:25:9:checkForBeat	6
+heartRate.c:83:9:averageDCEstimator	1
+heartRate.c:90:9:lowPassFIRFilter	2
+heartRate.c:108:9:mul16	1

@@ -21,6 +21,7 @@
 "./Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rcc.o"
 "./Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rcc_ex.o"
 "./Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_ll_rcc.o"
+"./I2C_LIB/Src/i2c1.o"
 "./max/Src/heartRate.o"
 "./max/Src/max30102.o"
 "./max/Src/spo2_algorithm.o"

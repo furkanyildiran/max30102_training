@@ -34,6 +34,8 @@ max/Src/max30102.o: ../max/Src/max30102.c \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_rcc_ex.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_crs.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h \
+ C:/Users/MONSTER/Desktop/max30102_training/I2C_LIB/Inc/i2c1.h \
+ ../Core/Inc/main.h \
  C:/Users/MONSTER/Desktop/max30102_training/max/Inc/max30102_mnemonics.h
 C:/Users/MONSTER/Desktop/max30102_training/max/Inc/max30102.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h:
@@ -70,4 +72,6 @@ C:/Users/MONSTER/Desktop/max30102_training/max/Inc/max30102.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_rcc_ex.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_crs.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h:
+C:/Users/MONSTER/Desktop/max30102_training/I2C_LIB/Inc/i2c1.h:
+../Core/Inc/main.h:
 C:/Users/MONSTER/Desktop/max30102_training/max/Inc/max30102_mnemonics.h:

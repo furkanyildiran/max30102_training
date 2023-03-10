@@ -1,0 +1,6 @@
+../I2C_LIB/Src/i2c1.c:6:6:I2C1_init	16	static
+../I2C_LIB/Src/i2c1.c:9:20:I2C1_getPtr	4	static
+../I2C_LIB/Src/i2c1.c:12:9:I2C1_Read8	32	static
+../I2C_LIB/Src/i2c1.c:16:6:I2C1_Write8	32	static
+../I2C_LIB/Src/i2c1.c:19:9:I2C1_ReadBurst	40	static
+../I2C_LIB/Src/i2c1.c:22:9:I2C1_WriteBurst	40	static
