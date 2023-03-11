@@ -62,8 +62,8 @@ all: main-build
 main-build: maxDeneme.elf secondary-outputs
 
 # Tool invocations
-maxDeneme.elf maxDeneme.map: $(OBJS) $(USER_OBJS) C:\Users\MONSTER\Desktop\max30102_training\STM32WB55CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "maxDeneme.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\MONSTER\Desktop\max30102_training\STM32WB55CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="maxDeneme.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+maxDeneme.elf maxDeneme.map: $(OBJS) $(USER_OBJS) C:\Users\MONSTER\Desktop\a\max30102_training\STM32WB55CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "maxDeneme.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\MONSTER\Desktop\a\max30102_training\STM32WB55CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="maxDeneme.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

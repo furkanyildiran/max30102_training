@@ -1,5 +1,5 @@
-#ifndef __MAX_MNEMONICS_H_
-#define __MAX_MNEMONICS_H_
+#ifndef __MAX_MNEMONICS_H__
+#define __MAX_MNEMONICS_H__
 
 // Status Registers
 #define MAX30102_INTSTAT1 									0x00

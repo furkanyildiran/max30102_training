@@ -1,10 +1,12 @@
 #include "max30102.h"
 #include "max30102_mnemonics.h"
+#include "max30102_config.h"
 
 static void write8(uint8_t reg_addr, uint8_t reg_val);
 static uint8_t read8(uint8_t reg_addr);
 static void readBurst(uint8_t reg_addr, uint8_t buff[], uint8_t buff_size);
 static void bitMask(uint8_t reg, uint8_t mask, uint8_t thing);
+static void Delay1Ms(void);
 
 
 uint8_t activeLEDs; //Gets set during setup. Allows check() to calculate how many bytes to read from FIFO
@@ -12,7 +14,7 @@ uint8_t revisionID;
 sense_struct sense;
 
 
-uint8_t MAX30102_begin(void) {
+uint8_t MAX30102_init(void) {
   // Step 1: Initial Communication and Verification
   // Check that a MAX30105 is connected
   if (MAX30102_readPartID() != MAX30102_EXPECTEDPARTID) {
@@ -20,8 +22,8 @@ uint8_t MAX30102_begin(void) {
     // This may mean there is a physical connectivity problem (broken wire, unpowered, etc).
     return false;
   }
-  // Populate revision ID
-  MAX30102_readRevisionID();
+  MAX30102_setup(MAX30102_POWERLVL_CONF, MAX30102_SAMPAVG_CONF, MAX30102_LEDMODE_CONF, MAX30102_SAMPRATE_CONF, MAX30102_PULSEWIDTH_CONF, MAX30102_ADCRANGE_CONF);
+
   return true;
 }
 
@@ -81,7 +83,7 @@ void MAX30102_softReset(void) {
   {
     uint8_t response = read8(MAX30102_MODECONFIG);
     if ((response & MAX30102_RESET) == 0) break; //We're done!
-    HAL_Delay(1); //Let's not over burden the I2C bus
+    Delay1Ms(); //Let's not over burden the I2C bus
   }
 }
 
@@ -239,7 +241,7 @@ float MAX30102_readTemperature() {
 	//Check to see if DIE_TEMP_RDY interrupt is set
 	uint8_t response = read8(MAX30102_INTSTAT2);
     if ((response & MAX30102_INT_DIE_TEMP_RDY_ENABLE) > 0) break; //We're done!
-    HAL_Delay(1); //Let's not over burden the I2C bus
+    Delay1Ms(); //Let's not over burden the I2C bus
   }
   //TODO How do we want to fail? With what type of error?
   //? if(millis() - startTime >= 100) return(-999.0);
@@ -534,19 +536,20 @@ uint8_t MAX30102_safeCheck(uint8_t maxTimeToCheck)
 
 	if(MAX30102_check() == true) //We found new data!
 	  return(true);
-
-	HAL_Delay(1);
+	Delay1Ms();
   }
 }
 
 
-void bitMask(uint8_t reg, uint8_t mask, uint8_t thing)
+static void bitMask(uint8_t reg, uint8_t mask, uint8_t thing)
 {
   uint8_t originalContents = read8(reg);
   originalContents = originalContents & mask;
   write8(reg, originalContents | thing);
 }
-
+static void Delay1Ms(void){
+	HAL_Delay(1);
+}
 static void write8(uint8_t reg_addr, uint8_t reg_val){
 	I2C1_Write8((MAX30105_ADDRESS << 1), reg_addr, reg_val);
 }

@@ -1,5 +1,5 @@
-#ifndef MAX30102_H__
-#define MAX30102_H__
+#ifndef __MAX30102_H__
+#define __MAX30102_H__
 #define MAX30105_ADDRESS          	0x57 //7-bit I2C Address
 #define I2C_BUFFER_LENGTH 			32
 #include <stdint.h>
@@ -8,7 +8,7 @@
 #include <string.h>
 #include "i2c1.h"
 
-uint8_t MAX30102_begin(void);
+uint8_t MAX30102_init(void);
 uint32_t MAX30102_getRed(void); //Returns immediate red value
 uint32_t MAX30102_getIR(void); //Returns immediate IR value
 uint32_t MAX30102_getGreen(void); //Returns immediate green value

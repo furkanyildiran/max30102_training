@@ -1,5 +1,5 @@
 I2C_LIB/Src/i2c1.o: ../I2C_LIB/Src/i2c1.c \
- C:/Users/MONSTER/Desktop/max30102_training/I2C_LIB/Inc/i2c1.h \
+ C:/Users/MONSTER/Desktop/a/max30102_training/I2C_LIB/Inc/i2c1.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h \
  ../Core/Inc/stm32wbxx_hal_conf.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_dma.h \
@@ -35,7 +35,7 @@ I2C_LIB/Src/i2c1.o: ../I2C_LIB/Src/i2c1.c \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_crs.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h \
  ../Core/Inc/main.h
-C:/Users/MONSTER/Desktop/max30102_training/I2C_LIB/Inc/i2c1.h:
+C:/Users/MONSTER/Desktop/a/max30102_training/I2C_LIB/Inc/i2c1.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h:
 ../Core/Inc/stm32wbxx_hal_conf.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_dma.h:

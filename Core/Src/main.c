@@ -77,7 +77,9 @@ uint32_t lastBeat = 0; //Time at which the last beat occurred
 
 float beatsPerMinute;
 int beatAvg;
-uint32_t va;
+uint32_t prevTime;
+uint8_t flag=0;
+uint32_t currentTime;
 /* USER CODE END 0 */
 
 /**
@@ -115,8 +117,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   SysTick_Config(SystemCoreClock/1000);
   I2C1_init(&hi2c1);
-  MAX30102_begin();
-  MAX30102_setup(0x1F, 4, 2, 400, 411, 4096);
+  MAX30102_init();
   //setup(60, 4, 2, 100, 411, 4096);
   //MAX30102_setPulseAmplitudeRed(0x0A);
   /* USER CODE END 2 */
@@ -128,7 +129,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  while(1){
+	  /*while(1){
 		  uint32_t irValue = MAX30102_getIR();
 
 		  if(checkForBeat(irValue) == 1)
@@ -150,21 +151,22 @@ int main(void)
 				  beatAvg /= RATE_SIZE;
 			  }
 		  }
-	  }
-	/*  bufferLength = 100; //buffer length of 100 stores 4 seconds of samples running at 25sps
+	  }*/
+	  bufferLength = 100; //buffer length of 100 stores 4 seconds of samples running at 25sps
 
 	  //read the first 100 samples, and determine the signal range
 	  for (uint8_t i = 0 ; i < bufferLength ; i++)
 	  {
-		  while (available() == 0) //do we have new data?
-	      check(); //Check the sensor for new data
-	      redBuffer[i] = getRed();
-	      irBuffer[i] = getIR();
-	      nextSample(); //We're finished with this sample so move to next sample
+		  while (MAX30102_available() == 0) //do we have new data?
+	      MAX30102_check(); //Check the sensor for new data
+	      redBuffer[i] = MAX30102_getRed();
+	      irBuffer[i] = MAX30102_getIR();
+	      MAX30102_nextSample(); //We're finished with this sample so move to next sample
 	  }
 	  //calculate heart rate and SpO2 after first 100 samples (first 4 seconds of samples)
 	  maxim_heart_rate_and_oxygen_saturation(irBuffer, bufferLength, redBuffer, &spo2, &validSPO2, &heartRate, &validHeartRate);
 	  //Continuously taking samples from MAX30102.  Heart rate and SpO2 are calculated every 1 second
+
 	  while (1)
 	  {
 		  //dumping the first 25 sets of samples in the memory and shift the last 75 sets of samples to the top
@@ -177,17 +179,40 @@ int main(void)
 		  //take 25 sets of samples before calculating the heart rate.
 		  for (uint8_t i = 75; i < 100; i++)
 		  {
-			  while (available() == 0) //do we have new data?
-				  check(); //Check the sensor for new data
+			  while (MAX30102_available() == 0) //do we have new data?
+				  MAX30102_check(); //Check the sensor for new data
 
-			  redBuffer[i] = getRed();
-			  irBuffer[i] = getIR();
-			  nextSample(); //We're finished with this sample so move to next sample
+			  redBuffer[i] = MAX30102_getRed();
+			  irBuffer[i] = MAX30102_getIR();
+
+			  MAX30102_nextSample(); //We're finished with this sample so move to next sample
+			  uint32_t irValue = irBuffer[i];
+
+			  if(checkForBeat(irValue) == 1)
+			  {
+				  //We sensed a beat!
+				  long delta = HAL_GetTick() - lastBeat;
+				  lastBeat = HAL_GetTick();
+
+				  beatsPerMinute = 60 / (delta / 1000.0);
+
+				  if (beatsPerMinute < 255 && beatsPerMinute > 20)
+				  {
+					  rates[rateSpot++] = (uint8_t)beatsPerMinute; //Store this reading in the array
+					  rateSpot %= RATE_SIZE; //Wrap variable
+					  //Take average of readings
+					  beatAvg = 0;
+					  for(uint8_t x = 0; x < 4; x++){
+						  beatAvg += rates[x];
+					  }
+					  beatAvg /= 4;
+				  }
+			  }
+
 		  }
-
 		  //After gathering 25 new samples recalculate HR and SP02
 		  maxim_heart_rate_and_oxygen_saturation(irBuffer, bufferLength, redBuffer, &spo2, &validSPO2, &heartRate, &validHeartRate);
-	  }*/
+	  }//*/
   }
   /* USER CODE END 3 */
 }
